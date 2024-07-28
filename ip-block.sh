@@ -90,8 +90,13 @@ for country in "${IPV4_COUNTRY_ARRAY[@]}"; do
   echo "${country}のIPリストのダウンロードが完了しました。"
 done
 
-# デバッグ用の出力
-echo "IPV4が有効な国: ${IPV4_COUNTRY_ARRAY[*]}"
-echo "IPV6が有効な国: ${IPV6_COUNTRY_ARRAY[*]}"
+
+FIREWALLD=${FIREWALLD:-0}
+if [ "$FIREWALLD" -eq 1 ]; then
+  echo "firewalldを使用してブロックします"
+  
+fi
+
+
 
 
